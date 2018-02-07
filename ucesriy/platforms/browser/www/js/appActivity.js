@@ -22,18 +22,7 @@
 	// change the map zoom so that all the data is shown
 	mymap.fitBounds(earthquakelayer.getBounds());
 	}
-	</script>
-	<!-- the following CSS is used to set the size of the Map -->
-	<style type="text/css">
-		#mapid { height: 180px; }
-	
-	</style>
-</head>
-<body>
-	<!-- the mapid div will hold the map -->
-	<div id="mapid" style="width: 600px; height: 400px;"></div>
-	<!-- the following script will load the map and set the default view and zoom, as well as loading thebasemap tiles -->
-	<script>
+
 		// load the map
 		var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 		// load the tiles
@@ -73,6 +62,4 @@
 	document.addEventListener('DOMContentLoaded',function(){
 		getEarthquakes();
 	},false);
-	</script>
-</body>
-</html>
+
