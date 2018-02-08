@@ -6,12 +6,12 @@ if (navigator.geolocation) {
 	}
 }
 function showPosition(position) {
-	document.getElementById('showLocation').innerHTML = "Latitude: " + position.coords.latitude +
-"<br>Longitude: " + position.coords.longitude;
+	// add a point
+	L.marker(document.getElementById('showLocation').innerHTML = "Latitude: " + position.coords.latitude +
+	"<br>Longitude: " + position.coords.longitude;).addTo(mymap).bindPopup("<b>Hello world!</b><br />I am here.").openPopup();
 }
 
-// add a point
-L.marker('showPosition').addTo(mymap).bindPopup("<b>Hello world!</b><br />I am here.").openPopup();
+
 		// load the map
 var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 		// load the tiles
