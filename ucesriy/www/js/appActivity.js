@@ -7,8 +7,7 @@ if (navigator.geolocation) {
 }
 function showPosition(position) {
 	// add a point
-	L.marker(document.getElementById('showLocation').innerHTML = "Latitude: " + position.coords.latitude +
-	"<br>Longitude: " + position.coords.longitude;).addTo(mymap).bindPopup("<b>Hello world!</b><br />I am here.").openPopup();
+	L.marker(position.coords.latitude,position.coords.longitude).addTo(mymap).bindPopup("<b>Hello world!</b><br />I am here.").openPopup();
 }
 
 
