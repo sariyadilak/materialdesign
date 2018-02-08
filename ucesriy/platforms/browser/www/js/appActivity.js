@@ -59,7 +59,6 @@
 			mymap.fitBounds(earthquakelayer.getBounds());
 			}
 
-			}
 function trackLocation() {
 if (navigator.geolocation) {
 	navigator.geolocation.watchPosition(showPosition);
