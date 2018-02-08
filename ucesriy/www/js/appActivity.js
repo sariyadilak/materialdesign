@@ -11,7 +11,7 @@ function showPosition(position) {
 }
 
 // add a point
-L.marker(trackLocation()).addTo(mymap).bindPopup("<b>Hello world!</b><br />I am here.").openPopup();
+L.marker('showPosition').addTo(mymap).bindPopup("<b>Hello world!</b><br />I am here.").openPopup();
 		// load the map
 var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 		// load the tiles
