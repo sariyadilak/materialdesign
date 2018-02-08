@@ -67,7 +67,7 @@ if (navigator.geolocation) {
 	}
 }
 function showPosition(position) {
-	L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap)
+	L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup(position.coords.latitude, position.coords.longitude).openPopup();
 	mymap.panTo(new L.LatLng(position.coords.latitude, position.coords.longitude), 13)
 }
 		// load the map
