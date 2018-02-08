@@ -1,3 +1,11 @@
+function addFeature(){
+// add a point
+L.marker([51.5, -0.09]).addTo(mymap).bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+// add a circle
+L.circle([51.508, -0.11], 500, {color: 'red',fillColor: '#f03',fillOpacity: 0.5}).addTo(mymap).bindPopup("I am a circle.");
+// add a polygon with 3 end points (i.e. a triangle)
+var myPolygon = L.polygon([[51.509, -0.08],[51.503, -0.06],[51.51, -0.047]],{color: 'red',fillColor: '#f03',fillOpacity: 0.5}).addTo(mymap).bindPopup("I am a polygon.");}	
+	
 	var client;
 	// and a variable that will hold the layer itself – we need to do this outside the function so that we use it to remove the layer later on
 	var earthquakelayer;
@@ -67,7 +75,7 @@ if (navigator.geolocation) {
 	}
 }
 function showPosition(position) {
-	L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("<b>"position.coords.latitude, position.coords.longitude"<b>").openPopup();
+	L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup(position.coords.latitude.toString()+"," +position.coords.longitude.toString()).openPopup();
 	mymap.panTo(new L.LatLng(position.coords.latitude, position.coords.longitude), 13)
 }
 		// load the map
