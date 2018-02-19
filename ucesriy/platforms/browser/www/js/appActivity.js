@@ -100,7 +100,7 @@ var lat = 51.524616;
 var lng = -0.13818;
 // return the distance in kilometers
 var distance = calculateDistance(position.coords.latitude, position.coords.longitude, lat,lng, 'K');
-L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("Distance to Warren Street"+distance.toString()).openPopup();
+L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("Distance to Warren Street:"+" "+distance.toString()+"Kilometers").openPopup();
 }
 
 function calculateDistance(lat1, lon1, lat2, lon2, unit) {
