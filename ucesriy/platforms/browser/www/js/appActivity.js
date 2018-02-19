@@ -78,6 +78,30 @@ function showPosition(position) {
 	L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup(position.coords.latitude.toString()+"," +position.coords.longitude.toString()).openPopup();
 	mymap.panTo(new L.LatLng(position.coords.latitude, position.coords.longitude), 13)
 }
+function removeEarthquakeData(){
+					alert("remove the earthquake data here");
+			}
+			// make sure that there is a variable for the earthquake layer to be referenced by
+			// this should be GLOBAL – i.e. not inside a function – so that any code can see the variable
+			var earthquakelayer;
+			function removeEarthquakeData(){
+					alert("Earthquake data will be removed");
+					mymap.removeLayer(earthquakelayer);
+			}
+function getDistance() {
+alert('getting distance');
+// getDistanceFromPoint is the function called once the distance has been found
+navigator.geolocation.getCurrentPosition(getDistanceFromPoint);
+}
+function getDistanceFromPoint(position) {
+// find the coordinates of a point using this website:
+// these are the coordinates for Warren Street
+var lat = 51.524616;
+var lng = -0.13818;
+// return the distance in kilometers
+var distance = calculateDistance(position.coords.latitude, position.coords.longitude, lat,lng, 'K');
+L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("Distance to Warren Street"+distance.toString()).openPopup();
+}
 		// load the map
 var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 		// load the tiles
