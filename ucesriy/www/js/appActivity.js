@@ -66,7 +66,7 @@ var myPolygon = L.polygon([[51.509, -0.08],[51.503, -0.06],[51.51, -0.047]],{col
 				}).addTo(mymap);
 			mymap.fitBounds(earthquakelayer.getBounds());
 			}
-			
+
 	var busstoplayer;
 	function getBusstops(){
 		client = new XMLHttpRequest();
@@ -97,10 +97,20 @@ if (navigator.geolocation) {
 	}
 }
 function showPosition(position) {
-	L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup(position.coords.latitude.toString()+"," +position.coords.longitude.toString()).openPopup();
+	var lat = 51.524616;
+	var lng = -0.13818;
+	var distance = calculateDistance(position.coords.latitude, position.coords.longitude, lat,lng, 'K');
+	var LocDist = "<dd>" + position.coords.latitude.toString()+"," +position.coords.longitude.toString() + "</dd>"+ "Distance from Warren Street:  "+distance+"  kms";
+	L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup(LocDist).openPopup();
 	mymap.panTo(new L.LatLng(position.coords.latitude, position.coords.longitude), 13)
+	if (distance < 4) {
+	alert('user is within 4 kms from Warren Street');
+	}
+	else {
+	alert ('user is 4 kms away from Warren Street');
+	}
 }
-function removeEarthquakeData(){
+function removeEarthquakesData(){
 					alert("remove the earthquake data here");
 			}
 			// make sure that there is a variable for the earthquake layer to be referenced by
@@ -111,26 +121,6 @@ function removeEarthquakeData(){
 					mymap.removeLayer(earthquakelayer);
 			}
 			
-
-
-function getDistance() {
-alert('getting distance');
-// getDistanceFromPoint is the function called once the distance has been found
-navigator.geolocation.getCurrentPosition(getDistanceFromPoint);
-}
-
-function getDistanceFromPoint(position) {
-	var lat = 51.524616;
-	var lng = -0.13818;
-	var distance = calculateDistance(position.coords.latitude, position.coords.longitude, lat,lng, 'K');
-	L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("Distance to Warren Street:"+" "+distance.toString()+"Kilometers").openPopup();
-	if (distance < 4) {
-	alert('user is within 4 kms from Warren Street');
-	}
-	else {
-	alert ('user is 4 kms away from Warren Street');
-	}
-}
 
 function calculateDistance(lat1, lon1, lat2, lon2, unit) {
 var radlat1 = Math.PI * lat1/180;
