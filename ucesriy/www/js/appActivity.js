@@ -70,7 +70,7 @@ var myPolygon = L.polygon([[51.509, -0.08],[51.503, -0.06],[51.51, -0.047]],{col
 	var busstoplayer;
 	function getBusstops(){
 		client = new XMLHttpRequest();
-		client.open('GET','https://developer.cege.ucl.ac.uk:31081/week2/busstops.geojson');
+		client.open('GET','http://developer.cege.ucl.ac.uk:31281/busstops.geojson');
 		client.onreadystatechange = busstopResponse;
 		client.send();
 	}
@@ -110,18 +110,17 @@ function removeEarthquakeData(){
 					alert("Earthquake data will be removed");
 					mymap.removeLayer(earthquakelayer);
 			}
+			
+var lat = 51.524616;
+var lng = -0.13818;
+var distance = calculateDistance(position.coords.latitude, position.coords.longitude, lat,lng, 'K');
+
 function getDistance() {
 alert('getting distance');
 // getDistanceFromPoint is the function called once the distance has been found
 navigator.geolocation.getCurrentPosition(getDistanceFromPoint);
 }
 function getDistanceFromPoint(position) {
-// find the coordinates of a point using this website:
-// these are the coordinates for Warren Street
-var lat = 51.524616;
-var lng = -0.13818;
-// return the distance in kilometers
-var distance = calculateDistance(position.coords.latitude, position.coords.longitude, lat,lng, 'K');
 L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("Distance to Warren Street:"+" "+distance.toString()+"Kilometers").openPopup();
 }
 
@@ -141,6 +140,17 @@ if (unit=="K") { dist = dist * 1.609344 ;} // convert miles to km
 if (unit=="N") { dist = dist * 0.8684 ;} // convert miles to nautical miles
 return dist;
 }
+
+function limitDistance(){
+	if (distance > 4) {
+	alert('the user is within 4 km from Warren Street');	
+	}
+	else {
+	alert('you are away from Warren Street 4 km');
+	}
+}
+	
+	
 
 		// load the map
 var mymap = L.map('mapid').setView([51.505, -0.09], 13);
