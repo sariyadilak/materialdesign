@@ -70,7 +70,7 @@ var myPolygon = L.polygon([[51.509, -0.08],[51.503, -0.06],[51.51, -0.047]],{col
 	var busstoplayer;
 	function getBusstops(){
 		client = new XMLHttpRequest();
-		client.open('GET','http://developer.cege.ucl.ac.uk:31281/busstops.geojson');
+		client.open('GET','./busstops.geojson');
 		client.onreadystatechange = busstopResponse;
 		client.send();
 	}
@@ -119,25 +119,18 @@ alert('getting distance');
 navigator.geolocation.getCurrentPosition(getDistanceFromPoint);
 }
 
-
-var limitDist;	
 function getDistanceFromPoint(position) {
 	var lat = 51.524616;
 	var lng = -0.13818;
 	var distance = calculateDistance(position.coords.latitude, position.coords.longitude, lat,lng, 'K');
 	L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("Distance to Warren Street:"+" "+distance.toString()+"Kilometers").openPopup();
 	if (distance < 4) {
-	return limitDist = 1;	
+	alert('user is within 4 kms from Warren Street');
+	}
+	else {
+	alert ('user is 4 kms away from Warren Street');
 	}
 }
-
-
-function limitDistance(){
-	if (limitDist = 1){
-	alert('user is within 4 km from Warren Street');
-	}
-}
-	
 
 function calculateDistance(lat1, lon1, lat2, lon2, unit) {
 var radlat1 = Math.PI * lat1/180;
