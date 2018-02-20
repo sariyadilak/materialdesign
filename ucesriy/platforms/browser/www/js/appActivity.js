@@ -110,19 +110,25 @@ function removeEarthquakeData(){
 					alert("Earthquake data will be removed");
 					mymap.removeLayer(earthquakelayer);
 			}
+			
+
+
 function getDistance() {
 alert('getting distance');
 // getDistanceFromPoint is the function called once the distance has been found
 navigator.geolocation.getCurrentPosition(getDistanceFromPoint);
 }
 function getDistanceFromPoint(position) {
-// find the coordinates of a point using this website:
-// these are the coordinates for Warren Street
-var lat = 51.524616;
-var lng = -0.13818;
-// return the distance in kilometers
-var distance = calculateDistance(position.coords.latitude, position.coords.longitude, lat,lng, 'K');
-L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("Distance to Warren Street:"+" "+distance.toString()+"Kilometers").openPopup();
+	var lat = 51.524616;
+	var lng = -0.13818;
+	var distance = calculateDistance(position.coords.latitude, position.coords.longitude, lat,lng, 'K');
+	L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("Distance to Warren Street:"+" "+distance.toString()+"Kilometers").openPopup();
+	if (distance > 4) {
+	alert('the user is within 4 km from Warren Street');	
+	}
+	else {
+	alert('you are away from Warren Street 4 km');
+	}
 }
 
 function calculateDistance(lat1, lon1, lat2, lon2, unit) {

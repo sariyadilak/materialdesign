@@ -119,6 +119,7 @@
           <a class="mdl-navigation__link" href=""onclick='removeEarthquakes();return false;'><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">layers_clear</i>Remove Earthquakes</a>
           <a class="mdl-navigation__link" href=""onclick='trackLocation();return false;'><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">my_location</i>Track Location</a>
           <a class="mdl-navigation__link" href=""onclick='getDistance();return false;'><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">near_me</i>Distance to Fixed Location</a>
+		  <a class="mdl-navigation__link" href=""onclick='limitDistance();return false;'><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">alarm</i>Alert to Fixed Location</a>
         </nav>
       </div>
 
@@ -127,10 +128,6 @@
           <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid">
 		  <!--the mapid div will hold the map-->
 		<div id="mapid" style="width: 500px; height: 500px;"></div>
-		<!--code adapt from https://www.w3schools.com/howto/howto_js_alert.asp-->
-		<script>
-		limitDistance();
-		</script>
 <!-- the following script will load the map and set the default view and zoom, as well as loading the
 basemap tiles -->
 		<script src="js/appActivity.js"></script>

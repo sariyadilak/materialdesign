@@ -111,9 +111,7 @@ function removeEarthquakeData(){
 					mymap.removeLayer(earthquakelayer);
 			}
 			
-var lat = 51.524616;
-var lng = -0.13818;
-var distance = calculateDistance(position.coords.latitude, position.coords.longitude, lat,lng, 'K');
+
 
 function getDistance() {
 alert('getting distance');
@@ -121,7 +119,16 @@ alert('getting distance');
 navigator.geolocation.getCurrentPosition(getDistanceFromPoint);
 }
 function getDistanceFromPoint(position) {
-L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("Distance to Warren Street:"+" "+distance.toString()+"Kilometers").openPopup();
+	var lat = 51.524616;
+	var lng = -0.13818;
+	var distance = calculateDistance(position.coords.latitude, position.coords.longitude, lat,lng, 'K');
+	L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("Distance to Warren Street:"+" "+distance.toString()+"Kilometers").openPopup();
+	if (distance > 4) {
+	alert('the user is within 4 km from Warren Street');	
+	}
+	else {
+	alert('you are away from Warren Street 4 km');
+	}
 }
 
 function calculateDistance(lat1, lon1, lat2, lon2, unit) {
@@ -140,17 +147,6 @@ if (unit=="K") { dist = dist * 1.609344 ;} // convert miles to km
 if (unit=="N") { dist = dist * 0.8684 ;} // convert miles to nautical miles
 return dist;
 }
-
-function limitDistance(){
-	if (distance > 4) {
-	alert('the user is within 4 km from Warren Street');	
-	}
-	else {
-	alert('you are away from Warren Street 4 km');
-	}
-}
-	
-	
 
 		// load the map
 var mymap = L.map('mapid').setView([51.505, -0.09], 13);
